@@ -1,0 +1,134 @@
+
+<script type="text/javascript">
+            $(function () {
+                $('#user_birthday').datetimepicker({
+                	 format: 'YYYY-MM-DD',
+                	 showClear:true,
+                	 locale:'zh-cn',
+                	 allowInputToggle:true,
+                	 ignoreReadonly:true,
+                	 showClose:true,
+                	 showTodayButton:true
+                });
+                $('input[name="gender"]').iCheck({
+                    radioClass: 'iradio_square-green'/* ,
+                    increaseArea: '20%' // optional */
+                  });
+                $('#genderM').on('ifChecked', function(event){
+                	$('#m').removeClass('fa-female').addClass('fa-male');
+                })
+                $('#genderF').on('ifChecked', function(event){
+                	$('#m').removeClass('fa-male').addClass('fa-female');
+                })
+                        var defaultData = [
+          {
+            text: 'Parent 1',
+            href: '#parent1',
+            tags: ['4'],
+            nodes: [
+              {
+                text: 'Child 1',
+                href: '#child1',
+                tags: ['2'],
+                nodes: [
+                  {
+                    text: 'Grandchild 1',
+                    href: '#grandchild1',
+                    tags: ['0']
+                  },
+                  {
+                    text: 'Grandchild 2',
+                    href: '#grandchild2',
+                    tags: ['0']
+                  }
+                ]
+              },
+              {
+                text: 'Child 2',
+                href: '#child2',
+                tags: ['0']
+              }
+            ]
+          },
+          {
+            text: 'Parent 2',
+            href: '#parent2',
+            tags: ['0']
+          },
+          {
+            text: 'Parent 3',
+            href: '#parent3',
+             tags: ['0']
+          },
+          {
+            text: 'Parent 4',
+            href: '#parent4',
+            tags: ['0']
+          },
+          {
+            text: 'Parent 5',
+            href: '#parent5'  ,
+            tags: ['0']
+          }
+        ];
+
+                /* $('#treeview-checkable').treeview({
+                    data: defaultData,
+                    showIcon: false,
+                    showCheckbox: true,
+                    onNodeChecked: function(event, node) {
+                    },
+                    onNodeUnchecked: function (event, node) {
+                    }
+                  }); */
+                $('#department_key').focus(function(){
+                	 $('#treeview-checkable').show();
+                });
+                $('#department_key').blur(function(){
+               	 $('#treeview-checkable').hide();
+               });
+            });
+</script>
+<form class="form-horizontal form-label-left input_mask">
+
+     <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+       <input type="text" class="form-control has-feedback-left" id="user_name" placeholder="用户名">
+       <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+     </div>
+
+     <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+       <input type="text" class="form-control has-feedback-left" id="login_account" placeholder="登录名">
+       <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+     </div>
+	<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+       <input type="password" class="form-control has-feedback-left" id="login_pass" placeholder="密码">
+       <span class="fa fa-lock form-control-feedback left" aria-hidden="true"></span>
+     </div>
+      <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+     	 <span id="m" class=" fa fa-male form-control-feedback left" aria-hidden="true"></span>
+     	 <div class="form-control has-feedback-left">
+     	 	男： <input type="radio" class="flat" name="gender" id="genderM" value="M" checked="checked" />
+     	 	女：<input type="radio" class="flat" name="gender" id="genderF" value="F"  />
+     	</div>
+     </div>
+     <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+       <input type="text" class="form-control has-feedback-left" id="user_phone" placeholder="手机">
+       <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
+     </div>
+	
+     <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+       <input type="text" class="form-control has-feedback-left" id="user_birthday"  placeholder="生日">
+       <span class="fa fa-calendar form-control-feedback left" aria-hidden="true"></span>
+     </div>
+    <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+       <input type="text" class="form-control has-feedback-left" id="user_email" placeholder="邮箱">
+       <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
+     </div>
+     <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+       <input type="text" class="form-control has-feedback-left" id="department_key" placeholder="部门">
+      <!--readonly="readonly"  <div id="treeview-checkable" hidden="true" style="overflow-y :scroll;z-index: auto;position:absolute;"></div> -->
+       <span class="fa fa-users form-control-feedback left" aria-hidden="true"></span>
+     </div>
+
+</form>
+

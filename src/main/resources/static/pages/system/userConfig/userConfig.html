@@ -1,0 +1,32 @@
+          <div class="" ng-controller="userController">
+                <div class="page-title">
+                  <div class="title_left">
+                      <h3>{{name}}</h3>
+                  </div>
+                    <div class="title_right">
+                        <div class="col-md-4 col-sm-4 col-xs-12  pull-right">
+                            <ol class="breadcrumb">
+                                <li><a ui-sref="role">主页</a></li>
+                                <li><a ui-sref="user">{{name}}</a></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+              <div id="toolbar" class="btn-group" role="group" >
+                  <button ng-click="add()" class="btn btn-success"><i class="fa fa-plus-circle"></i>添加</button>
+                  <button ng-click="edit()"class="btn btn-success"><i class="fa fa-pencil"></i>编辑</button>
+                  <button ng-click="del()"class="btn btn-danger"><i class="fa fa-trash"></i>删除</button>
+              </div>
+
+                <div class="row">
+                  <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                      <div class="x_content" >
+                            <table btable="{url:'user',toolbar:'#toolbar'}"></table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+          </div>
