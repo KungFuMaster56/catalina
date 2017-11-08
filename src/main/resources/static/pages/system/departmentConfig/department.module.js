@@ -4,7 +4,6 @@ define(['angular','pages/treeview.directive','pages/system/departmentConfig/depa
 	controller('departmentController',function($scope,departmentService){
 		$scope.name="部门管理";
 		$scope.columns=departmentService.columns;
-		$scope.treeData = departmentService.treeData;
 		
 		$scope.add=function(){
 			departmentService.add();
@@ -14,6 +13,9 @@ define(['angular','pages/treeview.directive','pages/system/departmentConfig/depa
 		}
 		$scope.del=function(){
 			departmentService.del();
+		}
+		$scope.loadTree = function(element){
+			departmentService.loadTree(element);
 		}
 	});
 	

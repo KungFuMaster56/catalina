@@ -4,8 +4,7 @@ define(['angular'],function(angular){
 		return {
 			restrict:'EA',
 			link:function(scope,element,attrs){
-				var tree = scope.treeData;
-				$(element).treeview({data:tree,showCheckbox:true});
+				scope.loadTree(element);
 			}
 		}
 	})
