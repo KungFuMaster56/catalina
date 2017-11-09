@@ -12,6 +12,8 @@ public class Department {
 	
 	private String description;
 	
+	private String parent_departmenvalue;
+	
 	private String text;
 	
 	private List<Department> nodes;
@@ -63,6 +65,14 @@ public class Department {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getParent_departmenvalue() {
+		return parent_departmenvalue;
+	}
+
+	public void setParent_departmenvalue(String parent_departmenvalue) {
+		this.parent_departmenvalue = parent_departmenvalue;
 	}
 
 }

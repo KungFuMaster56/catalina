@@ -9,8 +9,10 @@ import javax.annotation.Resource;
 
 import org.kevin.catalina.entity.Department;
 import org.kevin.catalina.mapper.DepartmentMapper;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -56,4 +58,19 @@ public class DepartmentController {
 		return result;
 	}
 
+	@PutMapping
+	public Map<String,Object> eidtNode(@RequestBody Department dep){
+		Map<String,Object> result=new HashMap<String,Object>();
+		Integer effect = department.editNode(dep);
+		result.put("effect", effect);
+		return result;
+	}
+	
+	@DeleteMapping
+	public Map<String,Object> delNode(@RequestBody Department dep){
+		Map<String,Object> result=new HashMap<String,Object>();
+		Integer effect = department.delNode(dep);
+		result.put("effect", effect);
+		return result;
+	}
 }

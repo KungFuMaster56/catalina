@@ -39,10 +39,10 @@ define(['angular','bootstrap-dialog','pnotify','treeview'],function(angular,Boot
 	               onshown:function(){
 	            	   if(checks.length==0){
 	            		   $('#parent_departmentkey').val('#');
-	            		   $('#parent_departmentext').val('顶级节点');
+	            		   $('#parent_departmenvalue').val('顶级节点');
 	            	   }else{
 	            		  $('#parent_departmentkey').val(checks[0]['department_key']);
-	            		  $('#parent_departmentext').val(checks[0]['text']);
+	            		  $('#parent_departmenvalue').val(checks[0]['text']);
 	            		   console.log(checks)
 	            	   }
 	               },
@@ -62,7 +62,7 @@ define(['angular','bootstrap-dialog','pnotify','treeview'],function(angular,Boot
 	                   label: '保存',
 	                   cssClass: 'btn-success',
 	                   action: function(dialogItself){
-	                	   alert($('#parent_departmentkey').val()+'-'+$('#department_value').val()+'-'+$('#description').val())
+	                	 //  alert($('#parent_departmentkey').val()+'-'+$('#department_value').val()+'-'+$('#description').val())
 	                   var department ={parent_departmentkey:$('#parent_departmentkey').val(),department_value:$('#department_value').val(),
 	                		   description:$('#description').val()};
 		                   $.ajax({
@@ -108,26 +108,27 @@ define(['angular','bootstrap-dialog','pnotify','treeview'],function(angular,Boot
 
 		};
 		this.edit=function(){
-	    	   if(flag){
+			var checks = $('[treeview]').treeview('getChecked');
+	    	   if(checks.length > 0){
 	        	   BootstrapDialog.show({
 	                   title:'修改记录',
-	                   message:$('<div></div>').load('pages/system/userConfig/userEdit.html'),
+	                   message:$('<div></div>').load('pages/system/departmentConfig/departmentEdit.html'),
 	                   draggable: true,
 	                   type:'jambo_dialog',
 	                   onshown:function(){
-	                       $('#user_name').val(rows[0]['user_name']);
-	                       $('#login_account').val(rows[0]['login_account']);
-	                       $('#login_pass').val(rows[0]['login_pass']);
-	                       $('#valid').select2("val",rows[0]['valid']);
+	                	   $('#department_value').val(checks[0]['department_value']);
+	                	   $('#description').val(checks[0]['description']);
+	                	   $('#department_key').val(checks[0]['department_key']);
+	                	   $('#parent_departmenvalue').val(checks[0]['parent_departmenvalue']);
 	                   }, buttons: [{
 	                       label: '保存',
 	                       icon: 'fa fa-check-circle',
 	                       cssClass: 'btn-success',
 	                       action: function(dialogItself){
-	                    	   var user ={user_id:rows[0]['user_id'],user_name:$('#user_name').val(),login_account:$('#login_account').val()
-	                              		,valid:$('#valid').val()};
+	                    	   var user ={department_key:$('#department_key').val(),description:$('#description').val(),
+	                    			   department_value:$('#department_value').val()};
 	    	                   	$.ajax({
-	    	             		   url:'user',
+	    	             		   url:'department',
 	    	             		   type:'put',
 	    	             		   contentType:'application/json;charset=utf-8;',
 	    	             		   data:JSON.stringify(user),
@@ -136,7 +137,7 @@ define(['angular','bootstrap-dialog','pnotify','treeview'],function(angular,Boot
 	    	             			   console.log(JSON.stringify(data))
 	    	             			   dialogItself.close();
 	    	             			  notice('提示信息','数据修改成功！','success');
-	    	             			   $('table[btable]').bootstrapTable('refresh');
+	    	             			 _this.loadTree($('[treeview]'));
 	    	             		   },
 	    	             		   error:function(data){
 	    	             			   console.error(JSON.stringify(data))
@@ -158,8 +159,9 @@ define(['angular','bootstrap-dialog','pnotify','treeview'],function(angular,Boot
 
 		};
 		this.del=function(){
-	    	   if(flag){
-	    		   var user = {login_account:rows[0]['login_account']};
+			var checks = $('[treeview]').treeview('getChecked');
+	    	   if(checks.length>0){
+	    		   var department = {department_key:checks[0]['department_key']};
 	        	   BootstrapDialog.confirm({
 	                   title: '提示信息',
 	                   message: '确定要删除所选数据吗?',
@@ -172,15 +174,15 @@ define(['angular','bootstrap-dialog','pnotify','treeview'],function(angular,Boot
 	                   callback: function(result) {
 	                       if(result) {
 	                    	   $.ajax({
-	            	      		   url:'user',
+	            	      		   url:'department',
 	            	      		   type:'delete',
 	            	      		   contentType:'application/json;charset=utf-8;',
-	            	      		   data:JSON.stringify(user),
+	            	      		   data:JSON.stringify(department),
 	            	      		   dataType:'json',
 	            	      		   success:function(data){
 	            	      			   console.log(JSON.stringify(data))
 	            	      			   notice('提示信息','数据删除成功！','success');
-	            	      			   $('table[btable]').bootstrapTable('refresh');
+	            	      			 _this.loadTree($('[treeview]'));
 	            	      		   },
 	            	      		   error:function(data){
 	            	      			   console.error(JSON.stringify(data))
