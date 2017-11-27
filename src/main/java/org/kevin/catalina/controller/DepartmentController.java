@@ -52,7 +52,7 @@ public class DepartmentController {
 	@PostMapping
 	public Map<String,Object> addNode(@RequestBody Department dep){
 		Map<String,Object> result=new HashMap<String,Object>();
-		dep.setDepartment_key(String.valueOf(department.maxKey()+1));
+		dep.setDepartment_key(String.valueOf(department.maxKey()==null?1000:department.maxKey()+1));
 		Integer effect = department.addNode(dep);
 		result.put("effect", effect);
 		return result;
@@ -71,6 +71,18 @@ public class DepartmentController {
 		Map<String,Object> result=new HashMap<String,Object>();
 		Integer effect = department.delNode(dep);
 		result.put("effect", effect);
+		return result;
+	}
+	
+	@GetMapping("select2")
+	public Map<String,Object> select2(){
+		List<Department> data =department.getAll();//查询数据库中的数据
+		for(Department d : data) {
+			String text = d.getParent_departmenvalue()==null?d.getDepartment_value():d.getParent_departmenvalue()+"-"+d.getText();
+			d.setText(text);
+		}
+		Map<String,Object> result = new HashMap<String,Object>();
+		result.put("results", data);
 		return result;
 	}
 }

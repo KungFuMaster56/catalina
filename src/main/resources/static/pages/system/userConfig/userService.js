@@ -71,7 +71,7 @@ define(['angular','pnotify','bootstrap-dialog','bootstrap-datetimepicker','selec
                    cssClass: 'btn-success',
                    action: function(dialogItself){
                    var user ={user_name:$('#user_name').val(),login_account:$('#login_account').val()
-                		   ,valid:$('#valid').val(),register_time:new Date()};
+                		   ,valid:$('#valid').val(),register_time:new Date(),department_key:$('#department_key').val()};
 	                   $.ajax({
 	            		   url:'user',
 	            		   type:'post',
@@ -111,7 +111,7 @@ define(['angular','pnotify','bootstrap-dialog','bootstrap-datetimepicker','selec
                        cssClass: 'btn-success',
                        action: function(dialogItself){
                     	   var user ={user_id:rows[0]['user_id'],user_name:$('#user_name').val(),login_account:$('#login_account').val()
-                              		,valid:$('#valid').val()};
+                              		,valid:$('#valid').val(),department_key:$('#department_key').val()};
     	                   	$.ajax({
     	             		   url:'user',
     	             		   type:'put',

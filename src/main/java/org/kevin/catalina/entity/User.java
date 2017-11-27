@@ -13,6 +13,7 @@ public class User {
 	private String user_birthday;
 	private String valid;
 	private String department_key;
+	private String department_value;
 	
 
 	public String getUser_id() {
@@ -80,6 +81,12 @@ public class User {
 	}
 	public void setDepartment_key(String department_key) {
 		this.department_key = department_key;
+	}
+	public String getDepartment_value() {
+		return department_value;
+	}
+	public void setDepartment_value(String department_value) {
+		this.department_value = department_value;
 	}
 	@Override
 	public String toString() {

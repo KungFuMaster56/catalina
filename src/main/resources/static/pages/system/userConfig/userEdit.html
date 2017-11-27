@@ -1,23 +1,50 @@
  <script>
  	$(function(){
  		$(".bootstrap-dialog").removeAttr('tabindex');
- 		 $(".select2").select2({
+ 		 /* $.ajax({
+ 			url:'department/select2',
+ 			dataType:'json',
+ 			type:'get',
+ 			success:function(data){
+ 				$("#department_key").select2({
+ 		 			language: "zh-CN", //设置 提示语言
+ 		            width: "100%", //设置下拉框的宽度
+ 		            allowClear: true,
+ 		           data:data
+ 		             ajax: {
+ 		            	url:'department/select2',
+ 		 				dataType:'json',
+ 		 				cache: true
+ 		            } 
+ 	 				
+ 		         });
+ 			}
+ 		})  */
+ 		/* $("#department_key").select2({
  			language: "zh-CN", //设置 提示语言
             width: "100%", //设置下拉框的宽度
-            //placeholder: "是否有效",
-            allowClear: true
+            allowClear: true,}); */
+          $("#department_key").select2({
+ 			language: "zh-CN", //设置 提示语言
+            width: "100%", //设置下拉框的宽度
+            allowClear: true,
+           data:[{id='1001':text:'开发部'}],
+             /* ajax: {
+            	url:'department/select2',
+ 				dataType:'json',
+ 				cache: true
+            }  */
+				
          });
+ 		$('#valid').select2({
+ 			language: "zh-CN", //设置 提示语言
+            width: "100%", //设置下拉框的宽度
+            allowClear: true,
+ 		});
+ 		 
  	})
  </script>
  <form class="form-horizontal form-label-left input_mask">
-     <!-- <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-          <input type="text" class="form-control has-feedback-left" id="inputSuccess2" placeholder="用户名">
-          <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
-     </div>
-     <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-          <input type="text" class="form-control has-feedback-right" id="inputSuccess2" placeholder="登录名">
-          <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
-     </div> -->
      <div class="form-group">
           <label class="control-label">用户名</label>
           	<input type="text" class="form-control" placeholder="用户名" id="user_name">
@@ -37,48 +64,8 @@
      </div>
      <div class="form-group">
           <label class="control-label">所属部门</label>
-          	<!-- <input type="text" class="form-control" placeholder="Default Input"> -->
           	<select id="department_key" class="form-control select2" data-placeholder="所属部门">
-          		
           		<option></option>
-          		<optgroup label="财务">
-          		<option value="1">出纳</option>
-          		</optgroup>
-          		<optgroup label="销售">
-          		<option value="0">食品</option>
-          		</optgroup>
           	</select>
      </div> 
-    <!--  <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12">用户名</label>
-          <div class="col-md-9 col-sm-9 col-xs-12">
-          	<input type="text" class="form-control" placeholder="用户名" id="user_name">
-          </div>
-     </div>
-     <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12">登录名</label>
-          <div class="col-md-9 col-sm-9 col-xs-12">
-          	<input type="text" class="form-control" placeholder="登录名" id="login_account">
-          </div>
-     </div>
-     <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12">是否有效</label>
-          <div class="col-md-9 col-sm-9 col-xs-12">
-          	<input type="text" class="form-control" placeholder="Default Input">
-          </div>
-     </div>
-     <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12">所属部门</label>
-          <div class="col-md-9 col-sm-9 col-xs-12">
-          	<input type="text" class="form-control" placeholder="Default Input">
-          </div>
-     </div> -->
-     <!-- <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-          <input type="text" class="form-control has-feedback-left" id="inputSuccess2" placeholder="是否有效">
-          <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
-     </div>
-     <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-          <input type="text" class="form-control has-feedback-right" id="inputSuccess2" placeholder="所属组织">
-          <span class="fa fa-group form-control-feedback right" aria-hidden="true"></span>
-     </div> -->
  </form>

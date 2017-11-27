@@ -31,6 +31,7 @@ public class UserController {
 	@PostMapping
 	public Map<String,Object> addUser(@RequestBody User user){
 		Map<String,Object> map = new HashMap<String,Object>();
+		user.setLogin_pass("111");
 		userMapper.addUser(user);
 		return map;
 	}

@@ -119,7 +119,7 @@ define(['angular','bootstrap-dialog','pnotify','treeview'],function(angular,Boot
 	                	   $('#department_value').val(checks[0]['department_value']);
 	                	   $('#description').val(checks[0]['description']);
 	                	   $('#department_key').val(checks[0]['department_key']);
-	                	   $('#parent_departmenvalue').val(checks[0]['parent_departmenvalue']);
+	                	   $('#parent_departmenvalue').val(checks[0]['parent_departmenvalue']?checks[0]['parent_departmenvalue']:'顶级节点');
 	                   }, buttons: [{
 	                       label: '保存',
 	                       icon: 'fa fa-check-circle',

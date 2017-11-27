@@ -16,6 +16,8 @@ public class Department {
 	
 	private String text;
 	
+	private String id;
+	
 	private List<Department> nodes;
 
 	public String getText() {
@@ -40,6 +42,7 @@ public class Department {
 
 	public void setDepartment_key(String department_key) {
 		this.department_key = department_key;
+		this.id = department_key;
 	}
 
 	public String getDepartment_value() {
@@ -73,6 +76,14 @@ public class Department {
 
 	public void setParent_departmenvalue(String parent_departmenvalue) {
 		this.parent_departmenvalue = parent_departmenvalue;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 }
